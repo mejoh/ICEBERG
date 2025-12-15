@@ -1,0 +1,33 @@
+{
+    "t1w": {
+        "datatype": "anat",
+        "acquisition": "UNIm",
+        "suffix": "T1w"
+    },
+    "flair": {
+        "datatype": "anat",
+        "acquisition": null,
+        "suffix": "FLAIR"
+    },
+    "bold": {
+        "datatype": "func",
+        "acquisition": null,
+        "task": "rest",
+        "suffix": "bold"
+    },
+    "fmap": {
+        "datatype": "fmap",
+        "acquisition": null,
+        "suffix": "magnitude1"
+    },
+    "fmap": {
+        "datatype": "fmap",
+        "acquisition": null ,
+        "suffix": "magnitude2"
+    },
+    "fmap": {
+        "datatype": "fmap",
+        "acquisition": null,
+        "suffix": "phasediff"     
+    }
+}

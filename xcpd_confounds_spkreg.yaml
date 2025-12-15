@@ -1,0 +1,61 @@
+name: aroma_gsr_custom
+description: |
+   Custom denoising pipeline. CSF, WM, and motion parameters (with derivatives
+   and expansions) are taken, as usual. 5 components each from aCompCor and
+   tCompCor are taken to account for cardiac and respiratory noise. Because
+   of the xCompCor components, cosines should normally be used as regressors as well,
+   but we cant to take advantage of bandpass filtering in XCP-D, so we do not include
+   them here. Lastly, ICA-AROMA components labelled as noise,
+   but orthogonalized with respect to non-noise components, are included.
+confounds:
+   preproc_confounds:
+      dataset: preprocessed
+      query:
+         space: null
+         cohort: null
+         res: null
+         den: null
+         desc: confounds
+         extension: .tsv
+         suffix: timeseries
+      columns:
+        - trans_x
+        - trans_x_derivative1
+        - trans_x_derivative1_power2
+        - trans_x_power2
+        - trans_y
+        - trans_y_derivative1
+        - trans_y_derivative1_power2
+        - trans_y_power2
+        - trans_z
+        - trans_z_derivative1
+        - trans_z_derivative1_power2
+        - trans_z_power2
+        - rot_x
+        - rot_x_derivative1
+        - rot_x_power2
+        - rot_x_derivative1_power2
+        - rot_y
+        - rot_y_derivative1
+        - rot_y_power2
+        - rot_y_derivative1_power2
+        - rot_z
+        - rot_z_derivative1
+        - rot_z_power2
+        - rot_z_derivative1_power2
+        - ^w_comp_cor_0[1-5]$
+        - ^c_comp_cor_0[1-5]$
+        - ^t_comp_cor_0[1-5]$
+        - ^motion_outlier.*$
+   aroma_confounds:
+      dataset: aroma
+      query:
+         space: null
+         cohort: null
+         res: null
+         den: null
+         desc: aroma
+         extension: .tsv
+         suffix: timeseries
+      columns:
+      - ^aroma_orth_motion_.*$
